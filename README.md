@@ -29,6 +29,27 @@ metric, with Spearman correlation and MAE as secondary metrics. Each randomized 
 
 Results: results are written to `results.json` (and a chart to `figures/`).
 
+## Results (latest run)
+
+On simulated independent-cascade cascades on a Barabási–Albert graph, a standard MLP on early-spread features reached R² 0.853 for log final size on the held-out test set, while a CV-tuned LightGBM on richer early-adoption features reached 0.861, a small gain of about 0.008.
+
+| Metric | Value |
+|---|---|
+| baseline_score | 0.8532 |
+| improved_score | 0.8612 |
+| improvement | 0.008037 |
+| baseline_score_std | 0.003016 |
+| improved_score_std | 0.0001855 |
+| baseline_spearman | 0.9779 |
+| improved_spearman | 0.9778 |
+| baseline_mae | 0.4256 |
+| improved_mae | 0.3872 |
+| lgbm_cv_r2 | 0.8802 |
+
+Run on 2026-10-12. Full output: [results.json](results.json) · [run.log](run.log)
+
+Notes: Simulated data, not the paper's Twitter/Digg cascades; the paper's transformer+GCN model is not reproduced (MLP stand-in). Single graph and single split. Baseline uses fixed hyper-parameters, not tuned. Best LightGBM CV params: {'learning_rate': 0.03, 'min_child_samples': 10, 'n_estimators': 200, 'num_leaves': 15}. Spearman and MAE are secondary and not used for selection.
+
 ## Reference
 
 This project is motivated by the following paper:
